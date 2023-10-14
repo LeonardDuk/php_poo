@@ -1,9 +1,9 @@
 <?php
 class Caneta {
-private $modelo;
+private $modelo ;
 private $cor ;
-private $ponta;
-public $tampada;
+private $ponta ;
+public $tampada ;
  
 public function Caneta ( $m , $c , $p ){
    $this->modelo = $m;
