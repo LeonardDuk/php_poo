@@ -34,7 +34,7 @@ class ContaBanco{
             $this->setsaldo($this->getsaldo() + $valor );
         }
         else{
-            echo"<p>Conta fechada, Não consigo </p>";
+            echo"<p>Conta fechada, Não consigo depositar!</p>";
         }
     }
     public function sacar(){
