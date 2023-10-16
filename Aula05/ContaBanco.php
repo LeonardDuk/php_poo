@@ -8,14 +8,34 @@ class ContaBanco{
     private $saldo;
     private $status ;       
    //métodos
-    public function abrirConta(){
-      
+    public function abrirConta($tipo){
+        $this->settipo($tipo);
+        $this->setstatus(true);
+        if($tipo == "cc"){
+            $this->setsaldo(50);
+        }
+        else if($tipo == "CP"){
+            $this->setsaldo(150);
+        }
     }
     public function fecharConta(){
-        
+        if($this->getsaldo() > 0){
+            echo "<p>Conta ainda tem dinheiro,não posso fecha-lá!</p>";
+        }
+        else if ($this->getsaldo() < 0){
+            echo"<p>Conta está em débito. Impossivel encerrar!</p>";
+        }
+        else{
+             $this->setstatus(false);
+        }
     }
-    public function depositar(){
-
+    public function depositar($valor){
+        if($this->getstatus()){
+            $this->setsaldo($this->getsaldo() + $valor );
+        }
+        else{
+            echo"<p>Conta fechada, Não consigo </p>";
+        }
     }
     public function sacar(){
 
@@ -23,6 +43,7 @@ class ContaBanco{
     public function pagarMensal(){
 
     }
+
     //métodos especiais 
     public function __construct(){
         
