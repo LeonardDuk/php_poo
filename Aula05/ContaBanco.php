@@ -27,6 +27,7 @@ class ContaBanco{
         }
         else{
              $this->setstatus(false);
+             echo" <p>Conta de " . $this->getdono() . " fechada com sucesso!</p> ";
         }
     }
     public function depositar($valor){
