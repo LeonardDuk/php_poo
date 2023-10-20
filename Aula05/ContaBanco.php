@@ -11,7 +11,7 @@ class ContaBanco{
     public function abrirConta($tipo){
         $this->settipo($tipo);
         $this->setstatus(true);
-        if($tipo == "cc"){
+        if($tipo == "CC"){
             $this->setsaldo(50);
         }
         else if($tipo == "CP"){
@@ -31,22 +31,50 @@ class ContaBanco{
     }
     public function depositar($valor){
         if($this->getstatus()){
+             // $this->saldo = $this->saldo + $valor;
             $this->setsaldo($this->getsaldo() + $valor );
+            echo"<p>Deposito de R$ $valor na conta de " . $this->getdono() . "</p>";
         }
         else{
             echo"<p>Conta fechada, Não consigo depositar!</p>";
         }
     }
-    public function sacar(){
-
+    public function sacar($valor){
+        if($this->getstatus()){
+            if($this->getsaldo() >= $valor){
+                // $this->saldo = $this->saldo - $valor;
+                $this->setsaldo($this->getsaldo() - $valor);
+                echo"<p>Saque de R$ $valor autorizado na conta de ". $this->getdono() . "</p>";
+            }
+            else{
+            echo"<p>Saldo insuficiente para saque!</p>";
+            }
+        }
+        else{
+            echo"<p>Não posso sacar de uma conta fechada!</p>";
+        }
     }
     public function pagarMensal(){
-
+        if($this->gettipo() == "CC"){
+        $valor = 12; 
+        }
+        else if($this->gettipo() == "CP"){
+            $valor = 20;
+        }
+        if ($this->getstatus()){
+            $this->setsaldo($this->getsaldo() - $valor);
+            echo"<p>Pagar a mensalidade de R$ $valor debitada na conte de " . $this->getdono() ."</p>";
+        }
+        else{
+            echo"<p>Problemas com a conta, não posso cobrar.</p>";
+        }
     }
 
     //métodos especiais 
     public function __construct(){
-        
+        $this->setsaldo(0);
+        $this->setstatus(false);
+        echo"<p>Conta criada com sucesso!</p>";
     }
     public function getnumConta(){
         return $this->numConta;
@@ -54,7 +82,7 @@ class ContaBanco{
     public function setnumConta($numConta){
         $this->numConta = $numConta;
     }
-    public function getipo(){
+    public function gettipo(){
         return $this->tipo;
     }
     public function settipo($tipo){
