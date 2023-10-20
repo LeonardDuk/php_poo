@@ -32,7 +32,7 @@ class ContaBanco{
     public function depositar($valor){
         if($this->getstatus()){
              // $this->saldo = $this->saldo + $valor;
-            $this->setsaldo($this->getsaldo() + $valor );
+            $this->setsaldo($this->getsaldo() + $valor );   
             echo"<p>Deposito de R$ $valor na conta de " . $this->getdono() . "</p>";
         }
         else{

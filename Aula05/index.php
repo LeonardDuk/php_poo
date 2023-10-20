@@ -13,9 +13,10 @@
      $contaBancoJubileu->setdono("Jubileu");
      $contaBancoJubileu->setnumConta("24589-7");
      $contaBancoJubileu->depositar(300);
+     $contaBancoJubileu->sacar(338);
      $contaBancoJubileu->pagarMensal();
      $contaBancoJubileu->fecharConta();
-     $contaBancoJubileu->sacar(338);
+     
      $contaBancoCreuza = new ContaBanco();
      $contaBancoCreuza->abrirConta("CP");
      $contaBancoCreuza->setdono("Creuza");
@@ -24,7 +25,7 @@
      $contaBancoCreuza->sacar(630);
      $contaBancoCreuza->pagarMensal();
      $contaBancoCreuza->fecharConta();
-          print_r ($contaBancoJubileu ); 
+          print_r ($contaBancoJubileu); 
           print_r($contaBancoCreuza);      
         ?>
         </pre>
